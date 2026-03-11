@@ -5,7 +5,7 @@ import task5.Optionals.OptionalInt.{Empty, Just, filter, mapInt}
 
 object Lab2 extends App {
 
-  // TUTTO IL LABORATORIO LO HO SVOLTO DA SOLO
+  // TUTTO IL LABORATORIO SVOLTO DA SOLO
 
   // TASK PART 1:
 
