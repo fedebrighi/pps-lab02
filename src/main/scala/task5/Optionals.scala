@@ -1,5 +1,7 @@
 package task5
 
+import java.util.function.Predicate
+
 // overall module
 object Optionals:
 
@@ -19,9 +21,14 @@ object Optionals:
       case Just(a) => a
       case _       => orElse
 
-    def map(opt: OptionalInt)(f: Int => Int): OptionalInt = opt match
+    def mapInt(opt: OptionalInt)(f: Int => Int): OptionalInt = opt match
       case Just(a) => Just(f(a))
       case _       => Empty()
+
+    def filter(opt: OptionalInt) (predicate: Int => Boolean): OptionalInt = opt match {
+      case Just(a) if predicate(a) => Just(a)
+      case _                       => Empty()
+    }
 
 @main def tryOptionals: Unit =
   import Optionals.* // to work with Optionals (to see OptionalInt type)
@@ -34,4 +41,6 @@ object Optionals:
   println(isEmpty(s1)) // false
   println(orElse(s1, 0)) // 1
   println(orElse(s2, 0)) // 0
-  println(map(s1)(i => i + 1)) // Some("val: 1")
+  println(mapInt(s1)(i => i + 1))
+  println(filter(Just(5))(_ > 2))
+  println(filter(Just(5))(_ < 2))
